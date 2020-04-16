@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  influxdb:
+    image: influxdb:alpine
+    volumes:
+      - influxdb-data:/var/lib/influxdb
+    ports:
+      - "8086:8086"
+    environment:
+      INFLUXDB_DB: openwisp2
+      INFLUXDB_USER: root
+      INFLUXDB_USER_PASSWORD: root
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    entrypoint: redis-server --appendonly yes
+
+volumes:
+  influxdb-data:

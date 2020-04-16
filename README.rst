@@ -19,24 +19,18 @@ OpenWISP 2 monitoring module (Work in progress).
 
 ------------
 
-Install Depdendencies
+Start InfluxDB and Redis (you can use different celery broker if you want).
+
+```
+docker-compose up -d
+```
+
+Install Dependencies
 ---------------------
 
-`Install influxdb <https://docs.influxdata.com/influxdb/v1.4/introduction/installation/>`_ eg:
+Install ``fping`` if you need to use the ping active check:
 
 .. code-block:: shell
-
-    curl -sL https://repos.influxdata.com/influxdb.key | sudo apt-key add -
-    source /etc/lsb-release
-    echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
-    sudo apt-get update && sudo apt-get install influxdb
-    sudo systemctl start influxdb
-
-Install redis (you can use different celery broker if you want):
-
-    sudo apt-get install redis-server
-
-Install ``fping`` if you need to use the ping active check:
 
     sudo apt-get install fping
 
